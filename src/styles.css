@@ -112,6 +112,7 @@ body {
 
 .form__line {
   display: flex;
+  position:relative;
 }
 
 .form__block:nth-of-type(2) {
@@ -198,6 +199,15 @@ body {
     font-size: 12px;
     line-height: 16px;
     color: #F12828;
+}
+
+.error__radio {
+  position: absolute;
+  height: 10px;
+  bottom: 15px;
+  font-size: 12px;
+  line-height: 16px;
+  color: #F12828;
 }
 
 .alert {
