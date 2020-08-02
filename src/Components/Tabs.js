@@ -1,30 +1,36 @@
 import React from "react";
 import "./../styles.css";
-import {NavLink} from "react-router-dom";
+import {NavLink, withRouter} from "react-router-dom";
 
-export const Tabs = () => {
+const Tabs = (props) => {
+
+    const active = 'active';
+    const delivery = 'Доставка';
+    const pickup = 'Самовывоз';
+    const path_delivery = 'delivery';
+    const path_pickup = 'pickup';
+
+const NavLinkCreator = (path, delivery, active) => {
+    return (
+        <NavLink to= {`/${path}`} className={`tabs__link ${active}`} activeClassName="active">
+            <div className="tabs__el">
+                        <span className="tabs__title">
+                            {delivery}
+                        </span>
+            </div>
+        </NavLink>
+        )
+};
 
     return (
         <nav className="tabs">
-
-            <NavLink to="/delivery" activeStyle={{textDecoration:"none"}} activeClassName="active" /*style={{textDecoration: "none", color: "#999999"}}*/   >
-
-                   <div className="tabs__el">
-                        <span className="tabs__title">
-                            Доставка
-                        </span>
-                   </div>
-
-            </NavLink>
-
-            <NavLink to="/pickup" activeStyle={{textDecoration:"none"}} /*style={{textDecoration: "none", color: "#999999"}}*/   activeClassName="active">
-                    <div className="tabs__el">
-                        <span className="tabs__title">
-                             Самовывоз
-                        </span>
-                    </div>
-            </NavLink>
-
+            {props.match.isExact
+                ? NavLinkCreator(path_delivery, delivery, active)
+                : NavLinkCreator(path_delivery, delivery)
+            }
+            {NavLinkCreator(path_pickup, pickup)}
         </nav>
     )
 };
+
+export default withRouter(Tabs);

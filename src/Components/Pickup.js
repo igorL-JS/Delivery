@@ -1,31 +1,91 @@
 import React from "react";
 import "./../styles.css";
+import {Map, Placemark, ZoomControl} from "react-yandex-maps";
+import local from "./local.png";
+import {useFormik} from "formik";
 
 export const Pickup = () => {
+
+    const validate = values => {
+        debugger
+        let errors = {};
+        (values.point !== "on") && (errors.point = "Выберите пункт самовывоза");
+        return errors
+    };
+    const pickupForm = useFormik({
+        initialValues: {},
+        validate
+    });
+
     return (
-    <form className="form form__pick-up">
+    <form className="form form__pick-up" onSubmit={pickupForm.handleSubmit} >
         <div className="form__line">
             <label className="form__block radiobox">
-                <input type="radio" className="form__radiobox" name="point" required/>
+                <input
+                    type="radio"
+                    className="form__radiobox"
+                    name="point"
+                    onChange={pickupForm.handleChange}
+                    disabled={pickupForm.isSubmitting}
+                />
                 <span className="form__radio-text">Пункт выдачи заказов Песчаная ул., д. 13</span>
+                {pickupForm.errors.point
+                    ? <div className="error">{pickupForm.errors.point}</div>
+                    : null}
             </label>
             <label className="form__block radiobox">
-                <input type="radio" className="form__radiobox" name="point" required/>
-                <span
-                    className="form__radio-text">Пункт выдачи заказов       Подсосенский пер. д. 11</span>
+                <input
+                    type="radio"
+                    className="form__radiobox"
+                    name="point"
+                    onChange={pickupForm.handleChange}
+                    disabled={pickupForm.isSubmitting}
+                />
+                <span className="form__radio-text">Пункт выдачи заказов       Подсосенский пер. д. 11</span>
             </label>
         </div>
         <div className="form__line">
             <label className="form__block map">
-                {/*<iframe
-                                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7327.889047116551!2d37.505118571066426!3d55.80309810002168!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b549b498c46ef3%3A0x217414041d419248!2z0J_QtdGB0YfQsNC90LDRjyDRg9C7LiwgMTMsINCc0L7RgdC60LLQsCwgMTI1MjUy!5e0!3m2!1sru!2sru!4v1595059703655!5m2!1sru!2sru"
-                                  width="100%" height="450" frameBorder="0" style="border:0;" allowFullScreen=""
-                                  aria-hidden="false" tabIndex="0"></iframe>*/}
+                <Map
+                    defaultState={{
+                    center: [55.7799089, 37.6022092],
+                    zoom: 10 ,
+                    behaviors: ["drag","multiTouch"]}}
+                    width='100%' height='560px'
+                >
+                    <Placemark
+                        geometry={
+                            [55.75757899, 37.65163243]}
+                        modules= {
+                            ['geoObject.addon.balloon', 'geoObject.addon.hint']}
+                        properties={{
+                            balloonContent: 'Пункт выдачи заказов Подсосенский пер. д. 11',
+                            hintContent: "Пункт выдачи заказов Подсосенский пер. д. 11"}}
+                        options={{
+                            iconLayout: 'default#image',
+                            iconImageHref: local,
+                            iconImageSize: [50 , 50],
+                            iconImageOffset: [-20, -50]}}
+                    />
+                    <Placemark
+                        geometry={
+                            [55.80109025, 37.5081557]}
+                        properties={{
+                            balloonContent: "Пункт выдачи заказов Песчаная ул., д. 13",
+                            hintContent: "Пункт выдачи заказов Песчаная ул., д. 13"}}
+                        options={{
+                            iconLayout: 'default#image',
+                            iconImageHref: local,
+                            iconImageSize: [50, 50],
+                            iconImageOffset: [-20, -50]}}
+                    />
+                    <ZoomControl options={{ float: 'right' }} />
+                </Map>
             </label>
         </div>
         <div className="form__line">
             <label className="form__submit">
-                <input type="submit" className="form__btn" value="Оформить заказ"/>
+                <input type="submit" className="form__btn" value="Оформить заказ" disabled={pickupForm.isSubmitting}/>
             </label>
         </div>
     </form>
