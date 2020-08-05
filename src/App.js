@@ -7,7 +7,6 @@ import {Delivery} from "./Components/Delivery";
 
 const App = () => {
 
-debugger
     return (
       <div className="container">
           <div className="content">

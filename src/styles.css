@@ -21,8 +21,7 @@ body {
   margin-bottom: 48px;
  }
 
-/*.radiobutton,*/
-
+.radiobutton,
 #tab1:checked ~ .tabs .tab1,
 #tab2:checked ~ .tabs .tab2 {
     background-color: white;
@@ -33,6 +32,7 @@ body {
 #tab2:checked ~ .tab2-content {
     display: block;
 }
+
 .tab1-content,
 .tab2-content {
     display: none;
