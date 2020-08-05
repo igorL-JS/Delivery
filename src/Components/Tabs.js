@@ -1,3 +1,4 @@
+/*
 import React from "react";
 import "./../styles.css";
 import {NavLink, withRouter} from "react-router-dom";
@@ -33,4 +34,4 @@ const NavLinkCreator = (path, delivery, active) => {
     )
 };
 
-export default withRouter(Tabs);
+export default withRouter(Tabs);*/

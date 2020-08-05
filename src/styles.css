@@ -13,7 +13,7 @@ body {
 }
 
 .content {
-	width: 100%;
+  width: 100%;
 }
 
 .title {
@@ -21,13 +21,26 @@ body {
   margin-bottom: 48px;
  }
 
+.radiobutton,
+.tab1-content,
+.tab2-content {
+  display: none;
+}
+
+#tab1:checked ~ .tab1-content,
+#tab2:checked ~ .tab2-content {
+  display: block;
+}
+
+#tab1:checked ~ .tabs .tab1,
+#tab2:checked ~ .tabs .tab2 {
+  background-color: white;
+  color: #215BF0;
+}
+
 .tabs {
   display: flex;
   justify-content: flex-start;
- }
-
-.tabs__link {
-  text-decoration: none;
 }
 
 .tabs__el {
@@ -49,13 +62,10 @@ body {
   transition: 0.6s;
 }
 
-.active .tabs__el{
-  background-color: white;
-  color: #215BF0;
-}
 
 .tabs__title {
   margin: auto;
+  cursor: pointer;
 }
 
 .form {

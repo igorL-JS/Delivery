@@ -15,8 +15,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "react-text-mask": "^5.4.3",
-    "react-yandex-maps": "^4.4.0",
-    "redux": "^4.0.5"
+    "react-yandex-maps": "^4.4.0"
   },
   "scripts": {
     "start": "react-scripts start",
