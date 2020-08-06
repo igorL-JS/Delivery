@@ -5,7 +5,7 @@ import local from "./local.png";
 import {useFormik} from "formik";
 
 
-export const Pickup = () => {
+export const Pickup = ({activeTab}) => {
 
     const validate = values => {
         debugger
@@ -19,7 +19,7 @@ export const Pickup = () => {
     });
 
     return (
-        <section className="tab2-content">
+        <section className={activeTab ? "tab2-content hidden" : "tab2-content"}>
             <form className="form form__pick-up" onSubmit={pickupForm.handleSubmit}>
                 <div className="form__line">
                     <label className="form__block radiobox">

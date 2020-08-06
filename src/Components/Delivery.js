@@ -4,7 +4,7 @@ import err from "./../Components/Vector.svg"
 import MaskedInput from "react-text-mask";
 import {useFormik} from "formik";
 
-export const Delivery = () => {
+export const Delivery = ({activeTab}) => {
     const validate = values => {
         let errors = {};
         (!values.fullname)
@@ -27,7 +27,7 @@ export const Delivery = () => {
         validate
     });
     return (
-        <section className="tab1-content">
+        <section className={activeTab ? "tab1-content" : "tab1-content hidden"}>
             <form className="form form__delivery" onSubmit={deliveryFormik.handleSubmit} autoComplete={"off"}>
                 <div className="form__line">
                     <label className="form__block"><span className="form__field-title">ФИО</span>

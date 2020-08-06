@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './styles.css';
 import {Pickup} from "./Components/Pickup";
 import {YMaps} from "react-yandex-maps";
@@ -7,6 +7,13 @@ import {Delivery} from "./Components/Delivery";
 
 const App = () => {
 
+    const [activeTab, setActiveTab] = useState(true);
+
+    const toggleTab = () => {
+        setActiveTab(!activeTab);
+    };
+
+debugger
     return (
       <div className="container">
           <div className="content">
@@ -14,17 +21,14 @@ const App = () => {
                   Выберите способ доставки
               </header>
 
-                <input  type="radio" id="tab1" name="tabs" className="radiobutton" checked />
-                <input type="radio" id="tab2" name="tabs" className="radiobutton" />
-
                 <nav className="tabs">
-                    <label htmlFor="tab1" className="tabs__el tab1"><span className="tabs__title">Доставка</span></label>
-                    <label htmlFor="tab2" className="tabs__el tab2"><span className="tabs__title">Самовывоз</span></label>
+                    <label htmlFor="tab1" className={activeTab ? "tabs__el active" : "tabs__el" } onClick={toggleTab} ><span className="tabs__title">Доставка</span></label>
+                    <label htmlFor="tab2" className={activeTab ? "tabs__el"  :"tabs__el active" } onClick={toggleTab}><span className="tabs__title">Самовывоз</span></label>
                 </nav>
-                    <Delivery/>
-                    <YMaps>
-                        <Pickup/>
-                    </YMaps>
+                <Delivery activeTab={activeTab}/>
+                <YMaps>
+                    <Pickup activeTab={activeTab}/>
+                </YMaps>
           </div>
       </div>
   );
