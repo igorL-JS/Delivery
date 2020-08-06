@@ -22,27 +22,6 @@ body {
  }
 
 
-
-/*#tab1:checked ~ .tabs .tab1,
-#tab2:checked ~ .tabs .tab2*/
-
-/*.active {
-    background-color: white;
-    color: #215BF0;
-}*/
-/*
-#tab1:checked ~ .tab1-content,
-#tab2:checked ~ .tab2-content {
-    display: block;
-}*//*
-!*.radiobutton,*!
-!*.tab1-content,
-.tab2-content*! {
-    display: none;
-}*/
-
-
-
 .tabs {
   display: flex;
   justify-content: flex-start;

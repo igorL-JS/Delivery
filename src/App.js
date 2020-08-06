@@ -9,7 +9,7 @@ const App = () => {
 
     const [activeTab, setActiveTab] = useState(true);
 
-    const toggleTab = () => {
+    const toggleTabs = () => {
         setActiveTab(!activeTab);
     };
 
@@ -22,8 +22,8 @@ debugger
               </header>
 
                 <nav className="tabs">
-                    <label htmlFor="tab1" className={activeTab ? "tabs__el active" : "tabs__el" } onClick={toggleTab} ><span className="tabs__title">Доставка</span></label>
-                    <label htmlFor="tab2" className={activeTab ? "tabs__el"  :"tabs__el active" } onClick={toggleTab}><span className="tabs__title">Самовывоз</span></label>
+                    <label htmlFor="tab1" className={activeTab ? "tabs__el active" : "tabs__el" } onClick={toggleTabs} ><span className="tabs__title">Доставка</span></label>
+                    <label htmlFor="tab2" className={activeTab ? "tabs__el"  :"tabs__el active" } onClick={toggleTabs}><span className="tabs__title">Самовывоз</span></label>
                 </nav>
                 <Delivery activeTab={activeTab}/>
                 <YMaps>
