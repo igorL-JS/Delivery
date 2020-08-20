@@ -174,11 +174,13 @@ body {
   outline: none;
 }
 
+
 .radiobox {
   position: relative;
   cursor: pointer;
   margin-bottom: 26px;
 }
+
 
 .form__radiobox {
   position: absolute;
