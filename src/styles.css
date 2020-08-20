@@ -174,24 +174,59 @@ body {
   outline: none;
 }
 
+.radiobox {
+  position: relative;
+  cursor: pointer;
+  margin-bottom: 26px;
+}
+
+.form__radiobox {
+  position: absolute;
+  opacity: 0;
+}
 
 
 .form__radio-text {
+  position: relative;
   font-size: 16px;
   line-height: 24px;
-  
+  padding-left: 24px;
   color: #222222;
-  margin-left: 8px;
 }
 
-.radiobox {
-  cursor: pointer;
-  margin-bottom: 26px;
+.form__radio-text::before {
+  content: "";
+  position: absolute;
+  display: inline-block;
+  left: 0;
+  top: 1px;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #222222;
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+.form__radio-text::after {
+  content: "";
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 8px;
+  top: 9px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: black;
+  opacity: 0;
 }
 
 .form__radiobox:checked + .form__radio-text {
   color: #215BF0;
   transition: 0.4s;
+}
+
+.form__radiobox:checked + .form__radio-text::after {
+  opacity: 1;
 }
 
 .error {

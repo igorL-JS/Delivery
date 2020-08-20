@@ -1,14 +1,14 @@
 import React from "react";
 import "./../styles.css";
 import {Map, Placemark, ZoomControl} from "react-yandex-maps";
-import local from "./local.png";
+import local from "./pin.svg";
 import {useFormik} from "formik";
 
 
 export const Pickup = ({activeTab}) => {
 
     const validate = values => {
-        debugger
+
         let errors = {};
         (values.point !== "on") && (errors.point = "Выберите пункт самовывоза");
         return errors
